@@ -29,6 +29,7 @@ SFW_COMMANDS = [
     '.bem',
     '.add',
     '.remove',
+    '.nobeard'
 ]
 
 NSFW_COMMANDS = [

@@ -2,7 +2,9 @@ import discord
 import asyncio
 import Logger
 import Commands
+import Utilities
 Client = discord.Client()
+#Utilities = Utilities.Utilities()
 @Client.event
 async def on_ready():
     print('Logged in as')
@@ -13,7 +15,6 @@ async def on_ready():
 
 @Client.event
 async def on_message(message: discord.Message):
-    print(message)
     if message.content.startswith('.test'):
         counter = 0
         tmp = await Client.send_message(message.channel, 'calc message')
@@ -24,14 +25,10 @@ async def on_message(message: discord.Message):
     elif message.content.startswith('.sleep'):
         await asyncio.sleep(5)
         await Client.send_message(message.channel, 'Done sleeping')
-    elif message.content.startswith('.weaboo'):
-        await Client.send_message(message.channel, 'https://www.youtube.com/watch?v=TBfWKmRFTjM')
-    elif message.content.startswith('.hello'):
-        await Client.send_message(message.channel, 'https://www.youtube.com/watch?v=zdQ0J85ABX8')
-    elif message.content.startswith('.rikka_dance'):
-        await Client.send_message(message.channel, Commands.ONE_LINERS_LINKS['.rikka_dance'])
-    elif message.channel.startswith('.surr20'):
-        await Client.send_message(message.channel, Commands.ONE_LINERS_LINKS['.surr20'])
+    elif await Utilities.one_liner(message, Client):
+        pass
+    elif message.content.startswith('.add') and message.channel.name == 'ideas_for_discord_bot':
+        return
     elif message.content.startswith('.close') and message.author.permissions_in(message.channel).administrator:
         await Client.close()
 Client.run('Mjc2MTEzNTQ4NDQ5NDE1MTcx.C3KeSg.Xt1ztH1_goNYIiRU27YYcJVbGk4')
