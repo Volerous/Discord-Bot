@@ -33,7 +33,8 @@ async def one_liner(message: discord.message, Client: discord.client):
     if command == '.nobeard':
         await Client.send_message(message.channel, 'http://i.imgur.com/puUW8ax.jpg')
         return True
-    if command == '.':
+    if command == '.bem':
+        await Client.send_message(message.channel, 'https://youtu.be/m1HHQ8fn_w0?t=55s')
         return True
     if command == '.':
         return True

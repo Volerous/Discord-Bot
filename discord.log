@@ -87,3 +87,43 @@
 2017-02-01 19:05:23,664:DEBUG:discord.client: Dispatching event socket_raw_receive
 2017-02-01 19:05:23,664:DEBUG:discord.gateway: WebSocket Event: {'t': None, 's': None, 'op': 11, 'd': None}
 2017-02-01 19:05:23,664:DEBUG:discord.client: Dispatching event socket_response
+2017-02-01 19:06:04,778:DEBUG:discord.gateway: Keeping websocket alive with sequence 13
+2017-02-01 19:06:04,915:DEBUG:discord.client: Dispatching event socket_raw_receive
+2017-02-01 19:06:04,916:DEBUG:discord.gateway: WebSocket Event: {'t': None, 's': None, 'op': 11, 'd': None}
+2017-02-01 19:06:04,916:DEBUG:discord.client: Dispatching event socket_response
+2017-02-01 19:06:38,657:DEBUG:discord.client: Dispatching event socket_raw_receive
+2017-02-01 19:06:38,657:DEBUG:discord.gateway: WebSocket Event: {'t': 'PRESENCE_UPDATE', 's': 14, 'op': 0, 'd': {'user': {'id': '116954825211510793'}, 'status': 'offline', 'roles': ['144916318699782146'], 'nick': None, 'guild_id': '109338621290557440', 'game': None}}
+2017-02-01 19:06:38,657:DEBUG:discord.client: Dispatching event socket_response
+2017-02-01 19:06:38,657:DEBUG:discord.client: Dispatching event member_update
+2017-02-01 19:06:46,028:DEBUG:discord.gateway: Keeping websocket alive with sequence 14
+2017-02-01 19:06:46,164:DEBUG:discord.client: Dispatching event socket_raw_receive
+2017-02-01 19:06:46,164:DEBUG:discord.gateway: WebSocket Event: {'t': None, 's': None, 'op': 11, 'd': None}
+2017-02-01 19:06:46,164:DEBUG:discord.client: Dispatching event socket_response
+2017-02-01 19:07:27,278:DEBUG:discord.gateway: Keeping websocket alive with sequence 14
+2017-02-01 19:07:27,416:DEBUG:discord.client: Dispatching event socket_raw_receive
+2017-02-01 19:07:27,417:DEBUG:discord.gateway: WebSocket Event: {'t': None, 's': None, 'op': 11, 'd': None}
+2017-02-01 19:07:27,417:DEBUG:discord.client: Dispatching event socket_response
+2017-02-01 19:07:51,743:DEBUG:discord.client: Dispatching event socket_raw_receive
+2017-02-01 19:07:51,743:DEBUG:discord.gateway: WebSocket Event: {'t': 'PRESENCE_UPDATE', 's': 15, 'op': 0, 'd': {'user': {'id': '119450475144675328'}, 'status': 'online', 'roles': [], 'nick': None, 'guild_id': '109338621290557440', 'game': None}}
+2017-02-01 19:07:51,743:DEBUG:discord.client: Dispatching event socket_response
+2017-02-01 19:07:51,743:DEBUG:discord.client: Dispatching event member_update
+2017-02-01 19:08:01,627:DEBUG:discord.client: Dispatching event socket_raw_receive
+2017-02-01 19:08:01,627:DEBUG:discord.gateway: WebSocket Event: {'t': 'VOICE_STATE_UPDATE', 's': 16, 'op': 0, 'd': {'user_id': '119450475144675328', 'suppress': False, 'session_id': 'da6a8ed890bf24d5bbe695ad8386e104', 'self_mute': False, 'self_deaf': False, 'mute': False, 'guild_id': '109338621290557440', 'deaf': False, 'channel_id': '109338621361860608'}}
+2017-02-01 19:08:01,627:DEBUG:discord.client: Dispatching event socket_response
+2017-02-01 19:08:01,628:DEBUG:discord.client: Dispatching event voice_state_update
+2017-02-01 19:08:08,528:DEBUG:discord.gateway: Keeping websocket alive with sequence 16
+2017-02-01 19:08:08,689:DEBUG:discord.client: Dispatching event socket_raw_receive
+2017-02-01 19:08:08,690:DEBUG:discord.gateway: WebSocket Event: {'t': None, 's': None, 'op': 11, 'd': None}
+2017-02-01 19:08:08,690:DEBUG:discord.client: Dispatching event socket_response
+2017-02-01 19:08:49,778:DEBUG:discord.gateway: Keeping websocket alive with sequence 16
+2017-02-01 19:08:49,915:DEBUG:discord.client: Dispatching event socket_raw_receive
+2017-02-01 19:08:49,915:DEBUG:discord.gateway: WebSocket Event: {'t': None, 's': None, 'op': 11, 'd': None}
+2017-02-01 19:08:49,915:DEBUG:discord.client: Dispatching event socket_response
+2017-02-01 19:09:10,190:DEBUG:discord.client: Dispatching event socket_raw_receive
+2017-02-01 19:09:10,190:DEBUG:discord.gateway: WebSocket Event: {'t': 'TYPING_START', 's': 17, 'op': 0, 'd': {'user_id': '109335275204853760', 'timestamp': 1485972554, 'channel_id': '109338621290557440'}}
+2017-02-01 19:09:10,190:DEBUG:discord.client: Dispatching event socket_response
+2017-02-01 19:09:10,191:DEBUG:discord.client: Dispatching event typing
+2017-02-01 19:09:11,277:DEBUG:discord.client: Dispatching event socket_raw_receive
+2017-02-01 19:09:11,277:DEBUG:discord.gateway: WebSocket Event: {'t': 'MESSAGE_CREATE', 's': 18, 'op': 0, 'd': {'type': 0, 'tts': False, 'timestamp': '2017-02-01T18:09:15.847000+00:00', 'pinned': False, 'nonce': '276413655581458432', 'mentions': [], 'mention_roles': [], 'mention_everyone': False, 'id': '276413675877826560', 'embeds': [], 'edited_timestamp': None, 'content': '.close', 'channel_id': '109338621290557440', 'author': {'username': 'ClairvoyantClaus', 'id': '109335275204853760', 'discriminator': '9950', 'avatar': '1ef710071497e9fda561eb9c3220f2a5'}, 'attachments': []}}
+2017-02-01 19:09:11,277:DEBUG:discord.client: Dispatching event socket_response
+2017-02-01 19:09:11,277:DEBUG:discord.client: Dispatching event message
