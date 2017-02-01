@@ -71,3 +71,19 @@
 2017-02-01 19:04:01,163:DEBUG:discord.client: Dispatching event socket_raw_receive
 2017-02-01 19:04:01,163:DEBUG:discord.gateway: WebSocket Event: {'t': None, 's': None, 'op': 11, 'd': None}
 2017-02-01 19:04:01,163:DEBUG:discord.client: Dispatching event socket_response
+2017-02-01 19:04:38,654:DEBUG:discord.client: Dispatching event socket_raw_receive
+2017-02-01 19:04:38,654:DEBUG:discord.gateway: WebSocket Event: {'t': 'PRESENCE_UPDATE', 's': 12, 'op': 0, 'd': {'user': {'username': 'Hudini', 'id': '116954825211510793', 'discriminator': '2721', 'avatar': 'abcb0398a3aa46fc3d95fa0d8c5b0cf4'}, 'status': 'online', 'roles': ['144916318699782146'], 'nick': None, 'guild_id': '109338621290557440', 'game': None}}
+2017-02-01 19:04:38,654:DEBUG:discord.client: Dispatching event socket_response
+2017-02-01 19:04:38,654:DEBUG:discord.client: Dispatching event member_update
+2017-02-01 19:04:42,277:DEBUG:discord.gateway: Keeping websocket alive with sequence 12
+2017-02-01 19:04:42,424:DEBUG:discord.client: Dispatching event socket_raw_receive
+2017-02-01 19:04:42,424:DEBUG:discord.gateway: WebSocket Event: {'t': None, 's': None, 'op': 11, 'd': None}
+2017-02-01 19:04:42,424:DEBUG:discord.client: Dispatching event socket_response
+2017-02-01 19:05:21,649:DEBUG:discord.client: Dispatching event socket_raw_receive
+2017-02-01 19:05:21,649:DEBUG:discord.gateway: WebSocket Event: {'t': 'PRESENCE_UPDATE', 's': 13, 'op': 0, 'd': {'user': {'id': '139450524729606144'}, 'status': 'online', 'roles': [], 'nick': None, 'guild_id': '109338621290557440', 'game': {'type': 0, 'name': 'FINAL FANTASY XIV'}}}
+2017-02-01 19:05:21,649:DEBUG:discord.client: Dispatching event socket_response
+2017-02-01 19:05:21,650:DEBUG:discord.client: Dispatching event member_update
+2017-02-01 19:05:23,527:DEBUG:discord.gateway: Keeping websocket alive with sequence 13
+2017-02-01 19:05:23,664:DEBUG:discord.client: Dispatching event socket_raw_receive
+2017-02-01 19:05:23,664:DEBUG:discord.gateway: WebSocket Event: {'t': None, 's': None, 'op': 11, 'd': None}
+2017-02-01 19:05:23,664:DEBUG:discord.client: Dispatching event socket_response
