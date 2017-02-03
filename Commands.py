@@ -3,8 +3,6 @@ import asyncio
 
 SFW_COMMANDS = [
     '.yak',
-    '.test',
-    '.sleep',
     '.chaika',
     '.anime',
     '.konosuba',
