@@ -69,10 +69,9 @@ async def one_liner(message: discord.Message, Client: discord.Client):
 async def multiLineCommands(message: discord.Message, Client: discord.Client):
     command = message.content.split(' ')
     if command[0] == '.add' and message.channel.name == 'ideas_for_discord_bot':
-        print(len(command))
         if len(command) >= 3:
-            MSG = "```\n Name:.{}\n\ Use:{}```".format(command[1],' '.join(command[2:]))
-            await Client.send_message(message.channel, 'Add Function:'+MSG)
+            MSG = "```\n Add Function:\n Name:.{}\n Use: {}```".format(command[1],' '.join(command[2:]))
+            await Client.send_message(message.channel, MSG)
             return True
         else:
             MSG = '```\n'
@@ -81,8 +80,11 @@ async def multiLineCommands(message: discord.Message, Client: discord.Client):
     if command[0] == '.' and message.channel.name == 'ideas_for_discord_bot':
         
         return True
-    if command[0] == '.':
-        
+    if command[0] == '.anime':
+        file = open('links/anime.txt', 'r')
+        urls = file.readlines()
+        await Client.send_message(message.channel, urls[randint(0, len(urls)-1)])
+        file.close()
         return True
     if command[0] == '.':
         
