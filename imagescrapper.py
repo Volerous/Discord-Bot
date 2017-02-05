@@ -11,4 +11,4 @@ def scrapePage(url):
 for paths,subdirs,files in os.walk('D:\Documents\GitHub\Discord Bot\links'):
     for file in files:
         with open(os.path.join(paths,file), 'r') as openfile:
-            urls =  
+            urls = openfile.readlines()
