@@ -66,6 +66,8 @@ async def one_liner(message: discord.Message, Client: discord.Client):
     if command == '.':
         return True
     return False
+
+async def getRandImage()
 async def multiLineCommands(message: discord.Message, Client: discord.Client):
     command = message.content.split(' ')
     if command[0] == '.add' and message.channel.name == 'ideas_for_discord_bot':
