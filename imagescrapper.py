@@ -10,7 +10,6 @@ def scrapePage(url):
     return(siteSoup.find('img')['src'])
 
 def scrapeFile(file):
-    print(file)
     openfile = open('links/'+file, 'r')
     urls = openfile.readlines()
     openfile.close()
@@ -19,10 +18,13 @@ def scrapeFile(file):
             urls[i] = scrapePage(urls[i])
     openfile = open('links/' + file, 'w')
     for url in urls:
+        if '\n' not in url:
+            url = url + '\n'
         openfile.write(url)
     openfile.close()
 
-    
+
 for paths,subdirs,files in os.walk('D:\Documents\GitHub\Discord Bot\links'):
     for file in files:
+        print(file)
         scrapeFile(file)
