@@ -23,8 +23,8 @@ def scrapeFile(file):
         openfile.write(url)
     openfile.close()
 
-
+'''
 for paths,subdirs,files in os.walk('D:\Documents\GitHub\Discord Bot\links'):
     for file in files:
         print(file)
-        scrapeFile(file)
+        scrapeFile(file)'''
