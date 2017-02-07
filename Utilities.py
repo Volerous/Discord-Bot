@@ -136,4 +136,6 @@ async def multiLineCommands(message: discord.Message, Client: discord.Client):
         
         return True
     return False
-    
+
+async def writeHelp():
+    pass
