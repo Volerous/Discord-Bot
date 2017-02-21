@@ -1,4 +1,4 @@
 "# Discord-Bot" 
 # Requirements
-python 3.6
-disocrd.py
+- python 3.6
+- disocrd.py
