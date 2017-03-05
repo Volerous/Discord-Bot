@@ -57,9 +57,6 @@ async def one_liner(message: discord.Message, Client: discord.Client):
     if command == '.yak':
         await getRandImage('yak.txt', message, Client)
         return True
-    if command == '.tts':
-        await Client.send_message(message.channel, "Hello.", tts=True)
-        return True
     if command == '.abugin':
         await getRandImage('abugin.txt', message, Client)
         return True
@@ -72,10 +69,16 @@ async def one_liner(message: discord.Message, Client: discord.Client):
     if command == '.smash':
         await Client.send_message(message.channel, 'https://www.youtube.com/watch?v=-TcLxlkc2pA')
         return True
-    if command == '.':
+    if command == '.freak_out':
+        await getRandImage('freak_out.txt', message, Client)
         return True
-    if command == '.':
+    if command == '.konosuba_dance':
+        await getRandImage('konosuba_dance.txt', message, Client)
         return True
+    if command == '.fucku':
+        await Client.send_message(message.channel, 'http://i.imgur.com/I08DYpC.gifv')
+    if command == '.explosion':
+        await Client.send_message(message.channel, 'http://giphy.com/gifs/explosion-gif-Dnb7EUzpgfiPS')
     return False
 
 
@@ -102,37 +105,7 @@ async def multiLineCommands(message: discord.Message, Client: discord.Client):
             await Client.send_message(message.channel, 'remove help')
             return True
         return True
-    if command[0] == '.':
-        
-        return True
-    if command[0] == '.':
-        
-        return True
-    if command[0] == '.':
-        
-        return True
-    if command[0] == '.':
-        
-        return True
-    if command[0] == '.':
-        
-        return True
-    if command[0] == '.':
-        
-        return True
-    if command[0] == '.':
-        
-        return True
-    if command[0] == '.':
-        
-        return True
-    if command[0] == '.':
-        
-        return True
-    if command[0] == '.':
-        
-        return True
-    if command[0] == '.':
+    if command[0] == '.help':
         
         return True
     return False
