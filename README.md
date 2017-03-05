@@ -1,4 +1,4 @@
 "# Discord-Bot" 
-TODO:
-    Multi-line commands
-    txt files for random image commands
+# Requirements
+- python 3.6
+- disocrd.py
