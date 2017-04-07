@@ -1,0 +1,25 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+Client	../Core.py	/^Client = discord.Client()$/;"	kind:variable	line:6
+Commands.py	../Commands.py	1;"	kind:file	line:1
+Core.py	../Core.py	1;"	kind:file	line:1
+Logger.py	../Logger.py	1;"	kind:file	line:1
+NSFW_COMMANDS	../Commands.py	/^NSFW_COMMANDS = [$/;"	kind:variable	line:34
+SFW_COMMANDS	../Commands.py	/^SFW_COMMANDS = [$/;"	kind:variable	line:4
+Utilities.py	../Utilities.py	1;"	kind:file	line:1
+buildFiles	../Commands.py	/^def buildFiles():$/;"	kind:function	line:39
+getRandImage	../Utilities.py	/^async def getRandImage(file, message, Client):$/;"	kind:function	line:7
+handler	../Logger.py	/^handler = logging.FileHandler(filename='discord.log', encoding='utf-8', mode='w')$/;"	kind:variable	line:6
+imagescrapper.py	../imagescrapper.py	1;"	kind:file	line:1
+logger	../Logger.py	/^logger = logging.getLogger('discord')$/;"	kind:variable	line:4
+multiLineCommands	../Utilities.py	/^async def multiLineCommands(message: discord.Message, Client: discord.Client):$/;"	kind:function	line:85
+on_message	../Core.py	/^async def on_message(message: discord.Message):$/;"	kind:function	line:17
+on_ready	../Core.py	/^async def on_ready():$/;"	kind:function	line:9
+one_liner	../Utilities.py	/^async def one_liner(message: discord.Message, Client: discord.Client):$/;"	kind:function	line:13
+scrapeFile	../imagescrapper.py	/^def scrapeFile(file):$/;"	kind:function	line:12
+scrapePage	../imagescrapper.py	/^def scrapePage(url):$/;"	kind:function	line:8
+writeHelp	../Utilities.py	/^async def writeHelp():$/;"	kind:function	line:113

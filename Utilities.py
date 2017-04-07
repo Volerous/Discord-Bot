@@ -3,11 +3,12 @@ import asyncio
 import Commands
 from random import randint
 import linecache
+import youtube_dl
 
 async def getRandImage(file, message, Client):
     file = open('links/' + file, 'r')
     urls = file.readlines()
-    await Client.send_message(message.channel, urls[randint(0, len(urls)-1)])
+    await Client.send_message(message.channel, urls[randint(0, len(urls) - 1)])
     file.close()
 
 async def one_liner(message: discord.Message, Client: discord.Client):
@@ -86,7 +87,8 @@ async def multiLineCommands(message: discord.Message, Client: discord.Client):
     command = message.content.split(' ')
     if command[0] == '.add' and message.channel.name == 'ideas_for_discord_bot':
         if len(command) >= 3:
-            MSG = "```\n Add Function:\n Name:.{}\n Use: {}```".format(command[1],' '.join(command[2:]))
+            MSG = "```\n Add Function:\n Name:.{}\n Use: {}```".format(
+                command[1], ' '.join(command[2:]))
             newMes = await Client.send_message(message.channel, MSG)
             await Client.pin_message(newMes)
             return True
@@ -96,7 +98,8 @@ async def multiLineCommands(message: discord.Message, Client: discord.Client):
             return True
     if command[0] == '.remove' and message.channel.name == 'ideas_for_discord_bot':
         if len(command) >= 3:
-            MSG = "```\n Remove Function:\n Name:.{}\n Use: {}```".format(command[1],' '.join(command[2:]))
+            MSG = "```\n Remove Function:\n Name:.{}\n Use: {}```".format(
+                command[1], ' '.join(command[2:]))
             newMes = await Client.send_message(message.channel, MSG)
             await Client.pin_message(newMes)
             return True
@@ -106,7 +109,7 @@ async def multiLineCommands(message: discord.Message, Client: discord.Client):
             return True
         return True
     if command[0] == '.help':
-        
+
         return True
     return False
 
