@@ -3,6 +3,7 @@ import asyncio
 import Commands
 from random import randint
 import linecache
+import youtube_dl
 
 
 async def getRandImage(file, message, Client):
@@ -138,7 +139,7 @@ async def multiLineCommands(message: discord.Message, Client: discord.Client):
             await Client.send_message(message.channel, 'remove help')
             return True
         return True
-    if command[0] == '.help':
+    if command[0] == '.':
         await writeHelp()
         return True
     return False
