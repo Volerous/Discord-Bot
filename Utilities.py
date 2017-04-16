@@ -4,7 +4,7 @@ from Commands import *
 from random import randint
 import linecache
 import youtube_dl
-
+from imagescrapper import scrapePage
 
 async def getRandImage(file, message, Client):
     file = open('links/' + file, 'r')
@@ -197,8 +197,7 @@ async def one_liner(message: discord.Message, Client: discord.Client):
 
 async def multiLineCommands(message: discord.Message, Client: discord.Client):
     command = message.content.split(' ')
-    if command[
-            0] == '.add' and message.channel.name == 'ideas_for_discord_bot':
+    if command[0] == '.add' and message.channel.name == 'ideas_for_discord_bot':
         if len(command) >= 3:
             MSG = "```\n Add Function:\n Name:.{}\n Use: {}```".format(
                 command[1], ' '.join(command[2:]))
@@ -209,8 +208,7 @@ async def multiLineCommands(message: discord.Message, Client: discord.Client):
             MSG = '```\n'
             await Client.send_message(message.channel, 'add help')
             return True
-    if command[
-            0] == '.remove' and message.channel.name == 'ideas_for_discord_bot':
+    if command[0] == '.remove' and message.channel.name == 'ideas_for_discord_bot':
         if len(command) >= 3:
             MSG = "```\n Remove Function:\n Name:.{}\n Use: {}```".format(
                 command[1], ' '.join(command[2:]))
@@ -225,4 +223,14 @@ async def multiLineCommands(message: discord.Message, Client: discord.Client):
     if command[0] == '.help':
         await writeHelp(Client, message)
         return True
+    if command[0] == '.add_link':
+        if command[1] in Commands.SFW_COMMANDS:
+            command[1] = command[1].strip('.')
+            newUrl = scrapePage(command[2])
+            with open(command[1]+'.txt', 'w') as file:
+                urls = file.readlines()
+                urls.append(newUrl)
+            await Client.send_message(message.channel, command[1])
+        else:
+            await Client.send_message(message.channel, 'The given command does not exist.')
     return False
