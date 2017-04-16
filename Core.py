@@ -25,9 +25,9 @@ async def on_message(message: discord.Message):
     elif message.content.startswith('.sleep'):
         await asyncio.sleep(5)
         await Client.send_message(message.channel, 'Done sleeping')
-    elif await Utilities.one_liner(message, Client):
+    elif not message.author.bot and await Utilities.one_liner(message, Client):
         return
-    elif await Utilities.multiLineCommands(message, Client):
+    elif not message.author.bot and await Utilities.multiLineCommands(message, Client):
         return
     elif message.content.startswith('.close') and message.author.permissions_in(message.channel).administrator:
         await Client.close()

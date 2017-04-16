@@ -93,29 +93,35 @@ async def one_liner(message: discord.Message, Client: discord.Client):
     if command == '.fucku':
         await Client.send_message(message.channel,
                                   'http://i.imgur.com/I08DYpC.gifv')
+        return True
     if command == '.explosion':
         await Client.send_message(
             message.channel,
             'http://giphy.com/gifs/explosion-gif-Dnb7EUzpgfiPS')
+        return True
     if command == '.dennis':
         await Client.send_message(message.channel,
                                   'http://i.imgur.com/i81hHDw.png')
+        return True
     if command == '.tilt':
         await Client.send_message(message.channel,
                                   'http://i.imgur.com/wDnoH6R.png')
+        return True
     if command == '.okay':
         await Client.send_message(message.channel, 'https://www.youtube.com/watch?v=SOIDVB7wROw')
+        return True
     if command == '.huh':
         await Client.send_message(message.channel, 'https://www.youtube.com/watch?v=X_ckHY38M0U')
+        return True
     if command == '.help_me':
         await Client.send_message(message.channel, 'https://www.youtube.com/watch?v=-K1vGcH3gSY')
+        return True
     return False
 
 
 async def multiLineCommands(message: discord.Message, Client: discord.Client):
     command = message.content.split(' ')
-    if command[
-            0] == '.add' and message.channel.name == 'ideas_for_discord_bot':
+    if command[0] == '.add' and message.channel.name == 'ideas_for_discord_bot':
         if len(command) >= 3:
             MSG = "```\n Add Function:\n Name:.{}\n Use: {}```".format(
                 command[1], ' '.join(command[2:]))
@@ -126,8 +132,7 @@ async def multiLineCommands(message: discord.Message, Client: discord.Client):
             MSG = '```\n'
             await Client.send_message(message.channel, 'add help')
             return True
-    if command[
-            0] == '.remove' and message.channel.name == 'ideas_for_discord_bot':
+    if command[0] == '.remove' and message.channel.name == 'ideas_for_discord_bot':
         if len(command) >= 3:
             MSG = "```\n Remove Function:\n Name:.{}\n Use: {}```".format(
                 command[1], ' '.join(command[2:]))
@@ -142,6 +147,12 @@ async def multiLineCommands(message: discord.Message, Client: discord.Client):
     if command[0] == '.':
         await writeHelp()
         return True
+    if command[0] == '.add_link':
+        if command[1] in Commands.SFW_COMMANDS:
+            command[1] = command[1].strip('.')
+            await Client.send_message(message.channel, command[1])
+        else:
+            await Client.send_message(message.channel, 'The given command does not exist.')          
     return False
 
 
