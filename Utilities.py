@@ -4,7 +4,7 @@ import Commands
 from random import randint
 import linecache
 import youtube_dl
-
+from imagescrapper import scrapePage
 
 async def getRandImage(file, message, Client):
     file = open('links/' + file, 'r')
@@ -150,9 +150,13 @@ async def multiLineCommands(message: discord.Message, Client: discord.Client):
     if command[0] == '.add_link':
         if command[1] in Commands.SFW_COMMANDS:
             command[1] = command[1].strip('.')
+            newUrl = scrapePage(command[2])
+            with open(command[1]+'.txt', 'w') as file:
+                urls = file.readlines()
+                urls.append(newUrl)
             await Client.send_message(message.channel, command[1])
         else:
-            await Client.send_message(message.channel, 'The given command does not exist.')          
+            await Client.send_message(message.channel, 'The given command does not exist.')
     return False
 
 
