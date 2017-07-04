@@ -10,7 +10,6 @@ SFW_COMMANDS = [
     '.saltbae',
     '.lewd',
     '.nobeard',
-    '.bem',
     '.butthurt',
     '.hesright',
     '.john_cena',
@@ -20,7 +19,7 @@ SFW_COMMANDS = [
     '.abugin',
     '.dattebayo',
     '.eggplant',
-    '.smash'
+    '.smash',
     '.freak_out',
     '.konosuba_dance',
     '.fucku',
@@ -41,7 +40,8 @@ SFW_COMMANDS = [
 FUNC_COMMANDS = [
     '.add',
     '.help',
-    '.remove'
+    '.remove',
+    '.add_link'
 ]
 
 NSFW_COMMANDS = [

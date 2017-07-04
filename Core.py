@@ -3,39 +3,38 @@ import asyncio
 import Logger
 import Commands
 import Utilities
-Client = discord.Client()
+from discord.ext import commands
+desc = """
+This is a Discord Bot
+"""
+help_attrs = dict(hidden=True)
+bot_prefix = ["."]
+bot = commands.Bot(command_prefix=bot_prefix, description=desc,pm_help=None, help_attrs=help_attrs)
+Utilities = Utilities.Utilities()
 
-
-#Utilities = Utilities.Utilities()
-@Client.event
+@bot.event
 async def on_ready():
     print('Logged in as')
-    print(Client.user.name)
-    print(Client.user.id)
+    print(bot.user.name)
+    print(bot.user.id)
     print('-------')
-    print(Client)
 
 
-@Client.event
+@bot.event
 async def on_message(message: discord.Message):
-    if message.content.startswith('.test'):
-        counter = 0
-        tmp = await Client.send_message(message.channel, 'calc message')
-        async for log in Client.logs_from(message.channel, limit=100):
-            if log.author == message.author:
-                counter += 1
-        await Client.edit_message(tmp, 'you have {} messages'.format(counter))
-    elif message.content.startswith('.sleep'):
-        await asyncio.sleep(5)
-        await Client.send_message(message.channel, 'Done sleeping')
-    elif not message.author.bot and await Utilities.one_liner(message, Client):
+    if message.author.bot:
         return
-    elif not message.author.bot and await Utilities.multiLineCommands(message, Client):
-        return
-    elif message.content.startswith(
-            '.close') and message.author.permissions_in(
-                message.channel).administrator:
-        await Client.close()
+    await bot.process_commands(message)
 
+@bot.command()
+async def anime():
+    await bot.say("anime")
 
-Client.run('Mjc2MTEzNTQ4NDQ5NDE1MTcx.C3KeSg.Xt1ztH1_goNYIiRU27YYcJVbGk4')
+@bot.command()
+async def close():
+    bot.close()
+
+@bot.command()
+async def showmethecode():
+    await bot.say("https://github.com/Volerous/Discord-Bot")
+bot.run('Mjc2MTEzNTQ4NDQ5NDE1MTcx.C3KeSg.Xt1ztH1_goNYIiRU27YYcJVbGk4')
