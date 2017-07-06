@@ -1,0 +1,143 @@
+%% Last Modified: Fri Sep 07 22:02:45 2007.
+
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{weiwER}
+\typeout{Document Style `weiw_ER - Enhanced ER diagram support (ver 0.999)}
+
+\RequirePackage[normalem]{ulem}
+
+%% From http://www.tug.org/TeXnik/mainFAQ.cgi?file=misc/underline
+\def\dotuline{\bgroup
+  \ifdim\ULdepth=\maxdimen  % Set depth based on font, if not set already
+   \settodepth\ULdepth{(j}\advance\ULdepth.4pt\fi
+  \markoverwith{\begingroup
+  \advance\ULdepth0.08ex
+  \lower\ULdepth\hbox{\kern.15em .\kern.1em}%
+  \endgroup}\ULon}
+
+\def\dashuline{\bgroup
+  \ifdim\ULdepth=\maxdimen  % Set depth based on font, if not set already
+   \settodepth\ULdepth{(j}\advance\ULdepth.4pt\fi
+  \markoverwith{\kern.15em
+  \vtop{\kern\ULdepth \hrule width .3em}%
+  \kern.15em}\ULon}
+
+
+%% main
+\RequirePackage{tikz}
+
+% use libraries
+\usetikzlibrary{er,shapes,snakes,calendar,matrix,backgrounds,folding,automata}
+
+
+%% global declaration
+\tikzstyle{every entity}=[fill=blue!20,draw=blue,thick]
+\tikzstyle{every relationship}=[fill=orange!20,draw=orange,thick,aspect=2.0]
+\tikzstyle{every attribute}=[fill=black!20,draw=black,font=\scriptsize]
+
+\tikzstyle{weakentity}= [entity, double distance=2pt]
+\tikzstyle{idrelationship}= [relationship, double distance=2pt]
+
+% cannot add [sloped] to the style (ugly result for relationships that
+% connects two entities on the same x-coordinate.
+\tikzstyle{minmaxlabel}= [pos=0.5, auto, color=blue, font=\small]
+
+\tikzstyle{erline}= [shorten <=1pt, shorten >=1pt] % to take care of shaped drawn with [double] style. 
+
+
+%% macros
+% attributes
+\newcommand{\attrib}[4]{% #1: entity/relationship node, #2: angle, #3: text label, #4: pin distance (in mm)
+  \draw[shorten <=1pt] (#1) -- +(#2:#4mm) node[attribute] {#3};
+}
+
+% composite attribute <-- therefore, must give an id, then other
+% attributes can be easily added as if it is an entity
+\newcommand{\cattrib}[5]{% #1: entity/relationship node, #2: angle, #3: text label, #4: pin distance (in mm)
+  \draw[shorten <=1pt] (#1) -- +(#2:#4mm) node[attribute] (#5) {#3};
+}
+
+\newcommand{\pkattrib}[4]{% #1: entity/relationship node, #2: angle, #3: text label, #4: pin distance (in mm)
+  \draw[shorten <=1pt] (#1) -- +(#2:#4mm) node[attribute] {\underline{#3}};
+}
+
+% derived attributes
+\newcommand{\dvattrib}[4]{% #1: entity/relationship node, #2: angle, #3: text label, #4: pin distance (in mm)
+  \draw[shorten <=1pt] (#1) -- +(#2:#4mm) node[attribute, dashed] {#3};
+}
+
+% multivalued attributes
+\newcommand{\mvattrib}[4]{% #1: entity/relationship node, #2: angle, #3: text label, #4: pin distance (in mm)
+  \draw[shorten <=1pt] (#1) -- +(#2:#4mm) node[attribute, double distance=2pt] {#3};
+}
+
+% partial key
+\newcommand{\ptattrib}[4]{% #1: entity/relationship node, #2: angle, #3: text label, #4: pin distance (in mm)
+  \draw[shorten <=1pt] (#1) -- +(#2:#4mm) node[attribute] {\dashuline{#3}};
+}
+
+\newcommand{\entity}[2]{% #1: entity node name, #2: text label
+  \node[entity] (#1) {#2};
+}
+
+
+\newcommand{\weakentity}[2]{% #1: entity node name, #2: text label
+  \node[weakentity] (#1) {#2};
+}
+
+\newcommand{\relationship}[2]{% #1: entity node name, #2: text label
+  \node[relationship] (#1) {#2};
+}
+
+% identifying relationship
+\newcommand{\idrelationship}[2]{% #1: entity node name, #2: text label
+  \node[idrelationship] (#1) {#2};
+}
+
+% connect a relationship to 2 entities
+\newcommand{\buildrelationship}[5]{% #1: relationship node name, #2: entity 1, #4: entity 2. #3 and #5 are min-max notations
+  \draw[erline] (#2) -- (#1) node[minmaxlabel] {#3};
+%  \draw[erline] (#1) -- (#4) node[minmaxlabel] {(#5)}; %% minmax lables on different sides
+  \draw[erline] (#1) -- (#4) node[minmaxlabel] {#5};  %% minmax lables on the same side
+}
+
+\newcommand{\addrelationship}[3]{% #1: relationship node name, #2: entity 1, #3: min-max notations
+  \draw[erline] (#2) -- (#1) node[minmaxlabel] {#3};  %% minmax lables on the same side
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+% %% Example Figures
+% \begin{tikzpicture} %[ampersand replacement=\&] % to be used inside another environment
+%   % matrix
+%   \matrix[row sep=1cm, column sep=2cm] {
+%     \entity{loan}{Loan}       & \idrelationship{has}{Has} & \weakentity{payment}{Payment} \\
+%     \relationship{owns}{Owns} &                           &                               \\
+%     \entity{branch}{Branch}   &                           & \relationship{test}{Test} \\
+%   };
+%   % relationships
+%   \buildrelationship{has}{loan}{(0,1)}{payment}{(1,1)}
+%   \buildrelationship{owns}{loan}{(1,1)}{branch}{(0,n)}
+%   % have to simulate ternary relationship
+%   \buildrelationship{test}{loan}{}{branch}{} % no need to specify minmax for ternary relationships
+%   \addrelationship{test}{payment}{} % no need to specify minmax for ternary relationships
+%   % attributes for entities
+%   \pkattrib{loan}{180}{loanID}{20}
+%   \attrib{loan}{140}{amount}{20}
+%   \mvattrib{loan}{100}{multiVal}{20}
+%   %
+%   \dvattrib{payment}{0}{seq\_no}{20}
+%   % attributes for relationships
+%   \attrib{test}{0}{dummy}{20}
+% \end{tikzpicture}

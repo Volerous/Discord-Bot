@@ -1,8 +1,5 @@
 import discord
 import asyncio
-import Logger
-import Commands
-from Utilities import *
 from discord.ext import commands
 desc = """
 This is a Discord Bot
@@ -14,7 +11,12 @@ bot = commands.Bot(
     description=desc,
     pm_help=None,
     help_attrs=help_attrs)
-
+init_extensions = [
+    'cogs.Misc',
+    'cogs.Rand',
+    # 'cogs.Extra',
+    'cogs.Warframe'
+]
 
 
 @bot.event
@@ -32,16 +34,12 @@ async def on_message(message: discord.Message):
     await bot.process_commands(message)
 
 
-
-@bot.command()
+@bot.command(hidden=True)
 async def close():
     await bot.close()
 
 
-@bot.command()
-async def showmethecode():
-    await bot.say("https://github.com/Volerous/Discord-Bot")
+for item in init_extensions:
+    bot.load_extension(item)
 
-bot.load_extension("Utilities")
 bot.run('Mjc2MTEzNTQ4NDQ5NDE1MTcx.C3KeSg.Xt1ztH1_goNYIiRU27YYcJVbGk4')
-
