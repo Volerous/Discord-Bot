@@ -1,9 +1,16 @@
 from discord.ext import commands
 from random import randint
-
+from urllib.request import urlopen
+from bs4 import BeautifulSoup
+from apiclient.discovery import build
 class Rand:
+    
     def __init__(self, bot):
         self.bot = bot
+        self.api_key = 'AIzaSyBVAP4DI7oxQYyyHJMxB94qWjFjsIHph_o'
+        API_SERVICE_NAME = "youtube"
+        API_VERSION = "v3"
+        self.service=build('youtube', 'v3', developerKey='AIzaSyBVAP4DI7oxQYyyHJMxB94qWjFjsIHph_o')
 
     async def getRandImage(self, file):
         file = open('links/' + file, 'r')
@@ -50,6 +57,13 @@ class Rand:
     @commands.command()
     async def eggplant(self):
         await self.getRandImage('eggplant.txt')
+    
+    @commands.command()
+    async def gigis(self):
+        results = self.service.search().list(part='id',maxResults=50,channelId="UCI7HWYaijk2ChE9Ce5YCgAQ").execute()
+        result = results["items"][randint(0,len(results["items"]))]["id"]["videoId"]
+        await self.bot.say("https://www.youtube.com/watch?v=" + result)
+ 
 
 
 def setup(bot):

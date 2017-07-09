@@ -39,6 +39,22 @@ async def close():
     await bot.close()
 
 
+@bot.command(name="load", hidden=True)
+async def load_ext(*, module: str):
+    bot.load_extension("cogs." + module)
+
+
+@bot.command(name="unload", hidden=True)
+async def unload_ext(*, module: str):
+    bot.unload_extension("cogs." + module)
+
+
+@bot.command(name="reload", hidden=True)
+async def reload_ext(*, module: str):
+    bot.unload_extension("cogs." + module)
+    bot.load_extension("cogs." + module)
+
+
 for item in init_extensions:
     bot.load_extension(item)
 

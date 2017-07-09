@@ -107,76 +107,8 @@ class Utilities:
         await self.bot.say('https://www.youtube.com/watch?v=Cn5S79ZFRcY')
 
     @commands.command()
-    async def showmethecode():
+    async def showmethecode(self):
         await self.bot.say("https://github.com/Volerous/Discord-Bot")
-
-    async def multiLineCommands(self,
-                                message: discord.Message,
-                                Client: discord.Client):
-        command = message.content.split(' ')
-        if command[0] == '.add' and message.channel.name == 'ideas_for_discord_bot':
-            if len(command) >= 3:
-                MSG = "```\n Add Function:\n Name:.{}\n Use: {}```".format(
-                    command[1], ' '.join(command[2:]))
-                newMes = await Client.send_message(message.channel, MSG)
-                await Client.pin_message(newMes)
-                return True
-            else:
-                MSG = '```\n'
-                await Client.send_message(message.channel, 'add help')
-                return True
-        if command[0] == '.remove' and message.channel.name == 'ideas_for_discord_bot':
-            if len(command) >= 3:
-                MSG = "```\n Remove Function:\n Name:.{}\n Use: {}```".format(
-                    command[1], ' '.join(command[2:]))
-                newMes = await Client.send_message(message.channel, MSG)
-                await Client.pin_message(newMes)
-                return True
-            else:
-                MSG = '```\n'
-                await Client.send_message(message.channel, 'remove help')
-                return True
-            return True
-        if command[0] == '.help':
-            await writeHelp(Client, message)
-            return True
-        if command[0] == '.add_link':
-            if command[1] in SFW_COMMANDS:
-                command[1] = command[1].strip('.')
-                newUrl = scrapePage(command[2])
-                with open("links/" + command[1] + '.txt', 'r+') as file:
-                    urls = file.readlines()
-                    if not newUrl in urls:
-                        urls.append(newUrl)
-                    for url in urls:
-                        file.write(url)
-                await Client.send_message(message.channel,
-                                          'img put in to list')
-            else:
-                await Client.send_message(message.channel,
-                                          'The given command does not exist.')
-            return True
-        # arg for site
-        # arg for type
-        # arg for search
-        if command[0] == ".lmgtfy":
-            return True
-        if command[0] == ".embed":
-            embed = discord.Embed(title="Test Wishlist")
-            embed.add_field(name="Item", value="Ember")
-            embed.add_field(name="Elements", value="Blueprints, Systems")
-            await Client.send_message(message.channel, embed=embed)
-            return True
-
-        return False
-
-    def save_wishlist(self, wlist):
-        with open("wishlist.pkl", "w") as w_list_file:
-            pickle.dump(self.wishlists, w_list_file, pickle.HIGHEST_PROTOCOL)
-
-    def load_wishlist(self, wlist):
-        with open("wishlist.pkl", "r") as w_list_file:
-            self.wishlists = pickle.load(w_list_file)
 
 
 def setup(bot):
