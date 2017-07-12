@@ -12,7 +12,7 @@ class Warframe:
         if ctx.invoked_subcommand is None:
             await self.bot.say("add a subcommand : show, add, remove")
 
-    @warframe.command(name="show")
+    @warframe.command(name="show", hidden=False)
     async def show_list(self, target: discord.Member=None):
         if target is None:
             await self.bot.say("no member given.")

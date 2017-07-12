@@ -14,7 +14,7 @@ bot = commands.Bot(
 init_extensions = [
     'cogs.Misc',
     'cogs.Rand',
-    # 'cogs.Extra',
+    'cogs.Extra',
     'cogs.Warframe'
 ]
 
