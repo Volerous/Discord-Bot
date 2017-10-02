@@ -110,6 +110,10 @@ class Utilities:
     async def showmethecode(self):
         await self.bot.say("https://github.com/Volerous/Discord-Bot")
 
+    @commands.command()
+    async def huttelihut(self):
+        await self.bot.say("https://www.youtube.com/watch?v=kwreawTbAqw")
+
 
 def setup(bot):
     bot.add_cog(Utilities(bot))
