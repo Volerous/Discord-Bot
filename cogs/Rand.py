@@ -70,6 +70,9 @@ class Rand:
             0, len(results["items"]))]["id"]["videoId"]
         await self.bot.say("https://www.youtube.com/watch?v=" + result)
 
+    @commands.command()
+    async def fucboi(self):
+        await self.getRandImage('fucboi.txt')
 
 
 def setup(bot):
