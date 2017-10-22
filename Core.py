@@ -1,6 +1,8 @@
 import discord
 import asyncio
 from discord.ext import commands
+from github import Github
+from os import system
 desc = """
 This is a Discord Bot
 """
@@ -17,6 +19,7 @@ init_extensions = [
     'cogs.Extra',
     'cogs.Warframe'
 ]
+
 
 
 @bot.event
@@ -39,6 +42,13 @@ async def on_message(message: discord.Message):
 async def close():
     await bot.close()
 
+@bot.command(hidden=True)
+async def update():
+    for i in init_extensions:
+        bot.unload_extension(i)
+    system("git pull")
+    for i in init_extensions:
+        bot.load_extension(i)
 
 @bot.command(name="load", hidden=True)
 async def load_ext(*, module: str):
