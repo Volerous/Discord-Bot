@@ -1,11 +1,12 @@
 import discord
 import asyncio
 from discord.ext import commands
-from github import Github
-from os import system
+from git import *
+import os
 desc = """
 This is a Discord Bot
 """
+git=Git(os.getcwd())
 help_attrs = dict(hidden=True)
 bot_prefix = ["."]
 bot = commands.Bot(
@@ -46,11 +47,10 @@ async def close():
 async def update():
     for i in init_extensions:
         bot.unload_extension(i)
-    system("git pull")
-    system("Volerous")
-    system("FOUR4arms")
+    ret = git.pull()
     for i in init_extensions:
         bot.load_extension(i)
+    print(ret)
 
 @bot.command(name="load", hidden=True)
 async def load_ext(*, module: str):
