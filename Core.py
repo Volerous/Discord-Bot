@@ -47,6 +47,8 @@ async def update():
     for i in init_extensions:
         bot.unload_extension(i)
     system("git pull")
+    system("Volerous")
+    system("FOUR4arms")
     for i in init_extensions:
         bot.load_extension(i)
 
