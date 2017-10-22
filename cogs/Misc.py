@@ -100,7 +100,7 @@ class Utilities:
 
     @commands.command()
     async def blackbaby(self):
-        await self.bot.say(':eggplant: :sweat_drops: :baby: :skin-tone-4:')
+        await self.bot.say(':eggplant: :sweat_drops: :baby::skin-tone-4:')
 
     @commands.command()
     async def arabruski(self):
