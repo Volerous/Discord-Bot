@@ -70,5 +70,5 @@ async def reload_ext(*, module: str):
 
 for item in init_extensions:
     bot.load_extension(item)
-
-bot.run('Mjc2MTEzNTQ4NDQ5NDE1MTcx.C3KeSg.Xt1ztH1_goNYIiRU27YYcJVbGk4')
+while True:
+    bot.run('Mjc2MTEzNTQ4NDQ5NDE1MTcx.C3KeSg.Xt1ztH1_goNYIiRU27YYcJVbGk4')
