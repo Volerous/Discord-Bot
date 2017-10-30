@@ -22,4 +22,5 @@ on_ready	../Core.py	/^async def on_ready():$/;"	kind:function	line:9
 one_liner	../Utilities.py	/^async def one_liner(message: discord.Message, Client: discord.Client):$/;"	kind:function	line:16
 scrapeFile	../imagescrapper.py	/^def scrapeFile(file):$/;"	kind:function	line:12
 scrapePage	../imagescrapper.py	/^def scrapePage(url):$/;"	kind:function	line:8
-writeHelp	../Utilities.py	/^async def writeHelp():$/;"	kind:function	line:155
+test.py	../test.py	1;"	kind:file	line:1
+writeHelp	../Utilities.py	/^async def writeHelp():$/;"	kind:function	line:163
