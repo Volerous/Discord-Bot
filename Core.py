@@ -1,37 +1,74 @@
 import discord
 import asyncio
-import Logger
-import Commands
-import Utilities
-Client = discord.Client()
-#Utilities = Utilities.Utilities()
-@Client.event
+from discord.ext import commands
+from git import *
+import os
+desc = """
+This is a Discord Bot
+"""
+git=Git(os.getcwd())
+help_attrs = dict(hidden=True)
+bot_prefix = ["."]
+bot = commands.Bot(
+    command_prefix=bot_prefix,
+    description=desc,
+    pm_help=None,
+    help_attrs=help_attrs)
+init_extensions = [
+    'cogs.Misc',
+    'cogs.Rand',
+    'cogs.Extra',
+    'cogs.Warframe'
+]
+
+
+
+@bot.event
 async def on_ready():
     print('Logged in as')
-    print(Client.user.name)
-    print(Client.user.id)
+    print(bot.user.name)
+    print(bot.user.id)
     print('-------')
-    print(Client)
+    bot.say("bot running")
 
-@Client.event
+
+@bot.event
 async def on_message(message: discord.Message):
-    if message.content.startswith('.test'):
-        counter = 0
-        tmp = await Client.send_message(message.channel, 'calc message')
-        async for log in Client.logs_from(message.channel, limit=100):
-               if log.author == message.author:
-                   counter += 1
-        await Client.edit_message(tmp, 'you have {} messages'.format(counter))
-    elif message.content.startswith('.sleep'):
-        await asyncio.sleep(5)
-        await Client.send_message(message.channel, 'Done sleeping')
-    elif not message.author.bot and await Utilities.one_liner(message, Client):
+    if message.author.bot:
         return
-    elif not message.author.bot and await Utilities.multiLineCommands(message, Client):
-        return
-    elif message.content.startswith('.close') and message.author.permissions_in(message.channel).administrator:
-        await Client.close()
-    '''elif message.content.startswith('.restart') and message.author.permissions_in(message.channel).administrator:
-        await Client.close()
-        Client.run('Mjc2MTEzNTQ4NDQ5NDE1MTcx.C3KeSg.Xt1ztH1_goNYIiRU27YYcJVbGk4')'''
-Client.run('Mjc2MTEzNTQ4NDQ5NDE1MTcx.C3KeSg.Xt1ztH1_goNYIiRU27YYcJVbGk4')
+    await bot.process_commands(message)
+
+
+@bot.command(hidden=True)
+async def close():
+    await bot.close()
+
+@bot.command(hidden=True)
+async def update():
+    for i in init_extensions:
+        bot.unload_extension(i)
+    ret = git.pull()
+    for i in init_extensions:
+        bot.load_extension(i)
+    print(ret)
+
+@bot.command(name="load", hidden=True)
+async def load_ext(*, module: str):
+    bot.load_extension("cogs." + module)
+
+
+@bot.command(name="unload", hidden=True)
+async def unload_ext(*, module: str):
+    bot.unload_extension("cogs." + module)
+
+
+@bot.command(name="reload", hidden=True)
+async def reload_ext(*, module: str):
+    bot.unload_extension("cogs." + module)
+    bot.load_extension("cogs." + module)
+
+
+for item in init_extensions:
+    bot.load_extension(item)
+while True:
+    bot.run('Mjc2MTEzNTQ4NDQ5NDE1MTcx.C3KeSg.Xt1ztH1_goNYIiRU27YYcJVbGk4')
